@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Doll Script is MAGIC. Names, events, page marks, and the cup that sips at the end of a paragraph.">
+  <meta name="author" content="Mira">
+  <link rel="canonical" href="https://doll.sociallydead.me/script/">
+  <link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Doll">
+  <meta property="og:title" content="Doll Script">
+  <meta property="og:description" content="Doll Script is MAGIC. Names, events, page marks, and the cup that sips at the end of a paragraph.">
+  <meta property="og:url" content="https://doll.sociallydead.me/script/">
+  <meta property="og:image" content="https://doll.sociallydead.me/assets/images/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Doll Script">
+  <meta name="twitter:description" content="Names, events, page marks, and the cup that sips at the end of a paragraph.">
+  <meta name="twitter:image" content="https://doll.sociallydead.me/assets/images/og.jpg">
+  <title>Doll Script</title>
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Site">
+      <a class="brand" href="/">
+        <img src="/assets/images/avatar.jpg" alt="" width="512" height="512">
+        Doll
+      </a>
+      <ul>
+        <li><a href="/">The room</a></li>
+        <li><a href="/script/" aria-current="page">Doll Script</a></li>
+      </ul>
+      <div class="nav-end">
+        <a class="ua" href="https://thewhitewitchtm.sociallydead.me/ukraine/" aria-label="I support Ukraine"><span></span><span></span></a>
+        <a class="coffee" href="https://www.paypal.com/ncp/payment/BVY3E2H2E2VWA" target="_blank" rel="noopener noreferrer">☕ Buy me a coffee</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-frame">
+    <aside class="side-rail" aria-label="Mira">
+      <div class="side-stick">
+        <img src="/assets/images/mira.jpg" width="832" height="1248" alt="Mira, close, orange hair and a red blouse, singing over a cup of coffee.">
+        <p class="rail-kicker">The cup</p>
+        <p class="rail-text"><code>assets/coffee/script.magic</code>. The numbers live on the cup. The file is the performance.</p>
+        <ul class="rail-links">
+          <li><a href="#names">Names</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#page">On the page</a></li>
+          <li><a href="#singing">Singing</a></li>
+          <li><a href="/#contribute">Contribute</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main id="main" class="content-area">
+      <p class="kicker">Language</p>
+      <h1>Doll Script</h1>
+      <p class="lede">Worn assets run Doll Script. The language is MAGIC: functions, classes, and modules, compiled to JavaScript. Doll runs that JavaScript.</p>
+
+      <section id="names">
+        <h2>Names</h2>
+        <p>A doll has a name. Mira is <code>mira</code>. The witch is <code>witch</code>. The tiefling is <code>tiefling</code>. The singer is <code>singer</code>. The same pattern names the rest of the company: <code>reaper</code>, <code>mandy</code>, <code>kimmel</code>, <code>miller</code>, <code>billy</code>, <code>elon</code>, <code>desi</code>, <code>trump</code>.</p>
+        <p>A dot reaches what she wears. The doll and the asset are the same kind of thing. Each one has properties, functions, and events.</p>
+        <ul>
+          <li><code>mira.speaking</code> is a property.</li>
+          <li><code>mira.say("hello")</code> is a function.</li>
+          <li><code>mira.always</code> is an event.</li>
+          <li><code>mira.coffee.pos</code> places the cup.</li>
+          <li><code>mira.coffee.hold_target</code> is a number that lives on the cup.</li>
+          <li><code>mira.coffee.hold()</code> is one of the cup's functions.</li>
+        </ul>
+        <p>A few of the worn names: <code>mira.coffee</code>, <code>witch.hat</code>, <code>witch.wand</code>, <code>witch.book</code>, <code>tiefling.horns</code>, <code>tiefling.ears</code>, <code>tiefling.tail</code>, <code>reaper.scythe</code>, <code>mandy.flower</code>, <code>miller.fangs</code>, <code>desi.mic</code>, <code>singer.guitar</code>.</p>
+      </section>
+
+      <section id="cup">
+        <h2>The cup</h2>
+        <p>That file is <code>assets/coffee/script.magic</code>. <code>hold</code> is the cup's own function, so the host names come in by import. <code>@doll</code> brings every host name when you are not using one of them for yourself. A function in the doll's own file lands on her. <code>hello()</code> in <code>assets/mira/script.magic</code> is <code>mira.hello</code>.</p>
+        <pre><code>import ik, curl, emit, closeJaw, tilt, speaking from "doll"
+
+fn hold()
+  ik("right", "mChest", "mHead", "hold", "sip")
+  curl("right")
+end
+
+fn steam()
+  emit()
+end
+
+fn sip()
+  closeJaw("sip_jaw")
+  tilt("mHead", "sip_nod")
+end
+
+let holds = "right"
+
+fn always()
+  mira.coffee.hold()
+  mira.coffee.steam()
+end
+
+fn chapter_end()
+  if speaking() then
+    mira.coffee.sip()
+  end
+end</code></pre>
+        <p>The numbers stay on <code>mira.coffee</code>. The file is the performance.</p>
+      </section>
+
+      <section id="events">
+        <h2>Events</h2>
+        <p>Write <code>fn init</code> in the file that owns the event.</p>
+        <table>
+          <thead>
+            <tr><th>Event</th><th>When it runs</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>init</code></td><td>Once, when that script loads.</td></tr>
+            <tr><td><code>start</code></td><td>Play or export begins.</td></tr>
+            <tr><td><code>stop</code></td><td>Play or export ends.</td></tr>
+            <tr><td><code>destroy</code></td><td>The script is replaced.</td></tr>
+            <tr><td><code>chapterStart</code></td><td>A chapter opens.</td></tr>
+            <tr><td><code>chapterEnd</code></td><td>That chapter closes.</td></tr>
+            <tr><td><code>always</code></td><td>Every pose. The doll first, then each worn asset.</td></tr>
+            <tr><td><code>chapter_end</code></td><td>On that same clock. The cup sips here, while the line is hers.</td></tr>
+            <tr><td><code>pose</code></td><td>With <code>always</code>.</td></tr>
+            <tr><td><code>timer</code></td><td>After <code>setTimer(seconds)</code>.</td></tr>
+            <tr><td><code>attach</code>, <code>touch</code>, <code>listen</code></td><td>There when a later event needs them.</td></tr>
+          </tbody>
+        </table>
+        <p>On a prop, <code>phase</code> is 0 at rest and 1 at the middle of its performance. On the doll, <code>phase</code> is how far the chapter has gone, from 0 to 1. <code>chapter</code> is the title on the clock.</p>
+      </section>
+
+      <section id="page">
+        <h2>On the page</h2>
+        <p>Square brackets mark the page, the way a link does. A paragraph with no name is Mira's, so an older page still plays. <code>Mira:</code> at the start of a line still names her.</p>
+        <pre><code>[@Mira] The cup is warm.
+
+[@Witch] The wand is awake. [!spark]
+
+[@Trump!trump.rant] The suit is the avatar.
+
+[!sip](mira.coffee.sip())</code></pre>
+        <table>
+          <thead>
+            <tr><th>Mark</th><th>What it does</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>[@Witch]</code></td><td>Selects that speaker for the words that follow.</td></tr>
+            <tr><td><code>[@Mira :)]</code></td><td>A smile can sit in the bracket. <code>:smile:</code> does the same.</td></tr>
+            <tr><td><code>[&amp;shanty @Singer]</code></td><td>Turns singing on. Shanty is the type. Singer is the mouth.</td></tr>
+            <tr><td><code>[&amp;shanty]</code></td><td>Sets the type and leaves the mouth.</td></tr>
+            <tr><td><code>[@Singer]</code></td><td>Selects who sings.</td></tr>
+            <tr><td><code>[end]</code></td><td>Closes the song.</td></tr>
+            <tr><td><code>[!sip]</code></td><td>Runs the function <code>sip</code>.</td></tr>
+            <tr><td><code>[@Trump!trump.rant]</code></td><td>Runs that script on Trump, even when another mouth is talking. <code>!</code> names the script, so the cue is <code>trump.rant</code>.</td></tr>
+            <tr><td><code>[!mira.coffee.hold]</code></td><td>Runs that function.</td></tr>
+            <tr><td><code>[!hold](mira.coffee.hold())</code></td><td>Runs the script after the bracket.</td></tr>
+            <tr><td><code>[! mira.coffee.sip() ]</code></td><td>The call can sit inside the brackets.</td></tr>
+          </tbody>
+        </table>
+        <p>Singing stays on through later paragraphs until <code>[end]</code>, or until a different narrator is selected, so the mark is not repeated on every verse. The words from the on mark to <code>[end]</code> are one song. The types are ballad, shanty, waltz, march, and dirge.</p>
+        <p>A fence is three backticks. Doll shows that listing on the terminal, in the same colors, while the chapter is on the clock. MAGIC inside the fence is highlighted and checked.</p>
+        <p>The spoken text leaves the marks off, and it leaves the markdown marks off too. A call with no words of its own rides on the nearest spoken line. LOL and LMAO are a laugh. IMHO is “in my humble opinion”. The voice says the words. It does not spell the letters.</p>
+        <p>The project starts as <code>main.md</code> and <code>main.ms</code>. A short call can sit on the page. Longer functions live in <code>main.ms</code>. Typing <code>@</code> then <code>!</code> completes the names.</p>
+      </section>
+
+      <section id="singing">
+        <h2>While she sings</h2>
+        <p><code>singing()</code> is true on a sung line. <code>tune()</code> is ballad, shanty, waltz, march, or dirge. <code>bpm()</code> is the tempo. <code>beat()</code> counts from the start of the chapter. <code>pulse()</code> is 1 on the strum and falls to 0 across the beat. It is 0 when nobody is singing.</p>
+        <p>The guitar is <code>singer.guitar</code>. It hangs on the chest. The left hand frets. The right hand stays on the body. <code>hands()</code> puts both hands there.</p>
+        <pre><code>@doll
+import pulse, tune, setRot, setPos, hands from "doll"
+
+fn strum()
+  let hit = pulse()
+  let kind = tune()
+  let amp = 0.12
+  if kind == "shanty" then
+    amp = 0.18
+  elseif kind == "waltz" then
+    amp = 0.15
+  elseif kind == "march" then
+    amp = 0.10
+  elseif kind == "dirge" then
+    amp = 0.08
+  end
+  let sway = hit * amp
+  setRot(-1.4208, sway, 0.55 + sway * 0.2)
+  setPos(0.08, -0.02, -0.10 - hit * 0.006)
+  hands()
+end
+
+let holds = "both"
+
+fn always()
+  strum()
+end</code></pre>
+      </section>
+
+      <section id="lsl">
+        <h2>Beside LSL</h2>
+        <p>The short names act on the object whose event is running.</p>
+        <table>
+          <thead>
+            <tr><th>LSL</th><th>Doll</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>llSetPos</code></td><td><code>setPos</code>, or <code>mira.coffee.pos</code></td></tr>
+            <tr><td><code>llSetRot</code></td><td><code>setRot</code></td></tr>
+            <tr><td><code>llSetScale</code></td><td><code>setScale</code></td></tr>
+            <tr><td><code>llGetOwner</code></td><td><code>owner</code>. Here that is <code>mira</code>.</td></tr>
+            <tr><td><code>llGetTime</code></td><td><code>clock</code></td></tr>
+            <tr><td><code>llSay</code></td><td><code>say</code>. <code>whisper</code> is the quiet one.</td></tr>
+            <tr><td><code>llSetTimerEvent</code></td><td><code>setTimer</code></td></tr>
+            <tr><td><code>llParticleSystem</code></td><td><code>emit</code></td></tr>
+          </tbody>
+        </table>
+        <p>Aiming the hand is <code>ik</code>, <code>curl</code>, <code>tilt</code>, and <code>closeJaw</code>. A tail wags with <code>sway</code>. <code>prop("hold_target")</code> still reads a number. So does <code>mira.coffee.hold_target</code>.</p>
+        <p><code>speaker()</code> is the chapter speaker, lowercased. <code>live()</code> is the line being spoken. <code>offer("witch")</code> points a worn mic at another doll. <code>wearer()</code> is the doll who owns the asset whose script is running. <code>owner()</code> is the page doll.</p>
+      </section>
+
+      <section id="picture">
+        <h2>Picture</h2>
+        <p><code>@2d</code> and <code>@3d</code> are MAGIC's picture modules. In Doll they draw into the room. A 3D sprite or box uses that module's axes: X to the right, Y up, Z toward you. Doll maps those onto the scene, where Z is up and the face looks down +X.</p>
+        <p><code>setCamera</code> moves the view, from <code>@3d</code> or from <code>@doll</code>. <code>camera</code> reads it back. A 2D sprite sits on the picture. <code>sprite</code>, <code>box</code>, <code>motion</code>, <code>update</code>, and <code>onCollision</code> keep their names.</p>
+        <p><code>Terminal</code> keeps a cell grid. <code>place(x, y, z)</code> sits that grid in an Apple II on the stage, and the glass colors the MAGIC. <code>@games</code>, <code>@sound</code>, and <code>@hex</code> are here too.</p>
+        <pre><code>@3d as world
+
+let scene = new world.Engine()
+scene.sprite("✦", 0.15, 1.3, -0.2, 0.12)
+scene.box(0.2, 0.9, -0.4, 0.15, 0.15, 0.15, "#d4552a")
+
+fn always()
+  scene.update()
+end</code></pre>
+        <p><code>tv</code>, <code>news</code>, <code>terminal</code>, <code>dragon</code>, <code>frog</code>, <code>cat</code>, <code>dog</code>, <code>bird</code>, <code>aquarium</code>, and <code>plant</code> are the script names. <code>prop("tv-2")</code> reaches a second one. The fish swim. <code>tv.text</code> and <code>tv.image</code> set the screen. The image is a WebP. <code>news.text</code> is the line on the glass. <code>terminal.text</code> is the listing. <code>dragon.stance</code> is <code>fly</code> or <code>ground</code>. Ground folds the wings. Fly lifts him and spreads them.</p>
+      </section>
+
+      <section id="contribute">
+        <p class="kicker">Contribute</p>
+        <h2>Buy me a coffee</h2>
+        <p>The language page is free to read. The coffee button is Contribute.</p>
+        <p>
+          <a class="coffee coffee-large" href="https://www.paypal.com/ncp/payment/BVY3E2H2E2VWA" target="_blank" rel="noopener noreferrer">☕ Buy me a coffee</a>
+        </p>
+      </section>
+    </main>
+
+    <aside class="side-rail" aria-label="The tiefling">
+      <div class="side-stick">
+        <img src="/assets/images/tiefling.jpg" width="832" height="1248" alt="The tiefling asleep, red skin, copper hair, small horns.">
+        <p class="rail-kicker">The tail</p>
+        <p class="rail-text">Four bones off the pelvis, <code>mTail1</code> through <code>mTail4</code>. <code>sway_speed</code> and <code>sway_amp</code> live on the tail.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <nav class="footer-links" aria-label="Footer">
+      <a href="mailto:miratechtm@sociallydead.me">Mail</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://github.com/TheWhiteWitchTM" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://miratechtm.sociallydead.me/" target="_blank" rel="noopener noreferrer">Mira's World</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://thewhitewitchtm.sociallydead.me/" target="_blank" rel="noopener noreferrer">The White Witch</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://youtube.com/@TheWhiteWitchTM" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://x.com/miratechtm" target="_blank" rel="noopener noreferrer">X</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://bsky.app/profile/miratechtm.sociallydead.me" target="_blank" rel="noopener noreferrer">Bluesky</a>
+      <span aria-hidden="true">·</span>
+      <span class="ua-words"><span class="blue">🇺🇦 Ukraine is my friend.</span> <span class="gold">Slava Ukraini!</span></span>
+    </nav>
+  </footer>
+</body>
+</html>

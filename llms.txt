@@ -1,0 +1,14 @@
+# Doll
+
+> A local narrator. https://doll.sociallydead.me/
+
+Doll speaks a markdown page, and she sings when the page asks. Qt Quick is the studio. Vulkan draws the doll. Doll Script is MAGIC.
+
+## Pages
+
+- [The room](https://doll.sociallydead.me/): the dolls, the voice, the stage, and Contribute
+- [Doll Script](https://doll.sociallydead.me/script/): names, events, page marks, singing, and the picture modules
+
+## Contribute
+
+Buy me a coffee: https://www.paypal.com/ncp/payment/BVY3E2H2E2VWA
