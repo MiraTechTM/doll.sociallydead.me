@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0a0a0a">
   <meta name="color-scheme" content="dark">
-  <meta name="description" content="Doll Script is MAGIC. Names, events, page marks, and the cup that sips at the end of a paragraph.">
+  <meta name="description" content="Doll Script is MAGIC. Names, events, classes, and the cup that sips while the line is hers.">
   <meta name="author" content="Mira">
   <link rel="canonical" href="https://doll.sociallydead.me/script/">
   <link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
@@ -15,12 +15,12 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Doll">
   <meta property="og:title" content="Doll Script">
-  <meta property="og:description" content="Doll Script is MAGIC. Names, events, page marks, and the cup that sips at the end of a paragraph.">
+  <meta property="og:description" content="Doll Script is MAGIC. Names, events, classes, and the cup that sips while the line is hers.">
   <meta property="og:url" content="https://doll.sociallydead.me/script/">
   <meta property="og:image" content="https://doll.sociallydead.me/assets/images/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Doll Script">
-  <meta name="twitter:description" content="Names, events, page marks, and the cup that sips at the end of a paragraph.">
+  <meta name="twitter:description" content="Names, events, classes, and the cup that sips while the line is hers.">
   <meta name="twitter:image" content="https://doll.sociallydead.me/assets/images/og.jpg">
   <title>Doll Script</title>
   <link rel="stylesheet" href="/assets/css/site.css">
@@ -34,7 +34,8 @@
         Doll
       </a>
       <ul>
-        <li><a href="/">The room</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/room/">The room</a></li>
         <li><a href="/script/" aria-current="page">Doll Script</a></li>
         <li><a href="https://www.youtube.com/@MiraTechTM" target="_blank" rel="noopener noreferrer">Demo</a></li>
       </ul>
@@ -54,6 +55,7 @@
         <ul class="rail-links">
           <li><a href="#names">Names</a></li>
           <li><a href="#events">Events</a></li>
+          <li><a href="#language">The language</a></li>
           <li><a href="#page">On the page</a></li>
           <li><a href="#singing">Singing</a></li>
           <li><a href="/#contribute">Contribute</a></li>
@@ -105,9 +107,6 @@ let holds = "right"
 fn always()
   mira.coffee.hold()
   mira.coffee.steam()
-end
-
-fn chapter_end()
   if speaking() then
     mira.coffee.sip()
   end
@@ -117,7 +116,7 @@ end</code></pre>
 
       <section id="events">
         <h2>Events</h2>
-        <p>Write <code>fn init</code> in the file that owns the event.</p>
+        <p>Write <code>fn chapterEnd</code> in the file that owns the event. That function is the object's handler, and it runs first. <code>+ chapterEnd(chapter)</code> listens after it. <code>- chapterEnd</code> removes the listeners this script added. It leaves <code>fn chapterEnd</code> in place. <code>-n + 1</code> stays arithmetic. <code>raise("tick", 4)</code> sends that name and one value. Listeners run in the order they were added.</p>
         <table>
           <thead>
             <tr><th>Event</th><th>When it runs</th></tr>
@@ -127,16 +126,39 @@ end</code></pre>
             <tr><td><code>start</code></td><td>Play or export begins.</td></tr>
             <tr><td><code>stop</code></td><td>Play or export ends.</td></tr>
             <tr><td><code>destroy</code></td><td>The script is replaced.</td></tr>
-            <tr><td><code>chapterStart</code></td><td>A chapter opens.</td></tr>
-            <tr><td><code>chapterEnd</code></td><td>That chapter closes.</td></tr>
-            <tr><td><code>always</code></td><td>Every pose. The doll first, then each worn asset.</td></tr>
-            <tr><td><code>chapter_end</code></td><td>On that same clock. The cup sips here, while the line is hers.</td></tr>
+            <tr><td><code>chapterStart</code></td><td>A chapter opens. The argument is that chapter.</td></tr>
+            <tr><td><code>chapterEnd</code></td><td>That chapter closes. The argument is the chapter that closed.</td></tr>
+            <tr><td><code>always</code></td><td>Every pose. The doll first, then each worn asset. The cup sips here, while the line is hers.</td></tr>
             <tr><td><code>pose</code></td><td>With <code>always</code>.</td></tr>
             <tr><td><code>timer</code></td><td>After <code>setTimer(seconds)</code>.</td></tr>
-            <tr><td><code>attach</code>, <code>touch</code>, <code>listen</code></td><td>There when a later event needs them.</td></tr>
+            <tr><td><code>attach</code></td><td>When it is worn.</td></tr>
+            <tr><td><code>touch</code></td><td>When it is touched.</td></tr>
+            <tr><td><code>listen</code></td><td>When someone speaks. The argument is <code>who</code>, <code>text</code>, and <code>how</code>. <code>how</code> is <code>say</code>, <code>whisper</code>, or <code>shout</code>.</td></tr>
           </tbody>
         </table>
-        <p>On a prop, <code>phase</code> is 0 at rest and 1 at the middle of its performance. On the doll, <code>phase</code> is how far the chapter has gone, from 0 to 1. <code>chapter</code> is the title on the clock.</p>
+        <p>The chapter argument is <code>title</code>, <code>start</code>, <code>end</code>, <code>speaker</code>, <code>time</code>, and <code>speaking</code>. <code>chapterStart</code> receives the chapter that opened. <code>chapterEnd</code> receives the chapter that closed. On a prop, <code>phase</code> is 0 at rest and 1 at the middle of its performance. On the doll, <code>phase</code> is how far the chapter has gone, from 0 to 1. <code>chapter</code> is the title on the clock.</p>
+      </section>
+
+      <section id="language">
+        <h2>The language</h2>
+        <p>Doll Script is MAGIC. A class has fields and functions. An interface names functions and has no fields. <code>class Child is Cup does Named</code> has one parent. <code>interface Tagged is Named</code> includes the parent interface. <code>type</code> of an instance is the class name. The interface is not a value.</p>
+        <pre><code>interface Named
+  fn label() as string
+end
+
+class Cup does Named
+  fn label() as string
+    return "coffee"
+  end
+end</code></pre>
+        <p><code>try</code> needs <code>catch</code>, <code>finally</code>, or both. <code>finally</code> runs before <code>return</code>, <code>break</code>, and <code>continue</code> leave. A <code>throw</code> with only <code>finally</code> runs that cleanup, and then the error leaves. <code>throw "broke"</code> and <code>throw error("broke")</code> are the same kind of error.</p>
+        <pre><code>try
+  risky()
+catch err
+  print err.message
+finally
+  print "done"
+end</code></pre>
       </section>
 
       <section id="page">
@@ -208,23 +230,32 @@ end</code></pre>
 
       <section id="lsl">
         <h2>Beside LSL</h2>
-        <p>The short names act on the object whose event is running.</p>
+        <p>The short names act on the object whose event is running. These are the calls a worn asset actually makes. Land, money, teleport, experiences, and vehicles are not in this room.</p>
         <table>
           <thead>
             <tr><th>LSL</th><th>Doll</th></tr>
           </thead>
           <tbody>
-            <tr><td><code>llSetPos</code></td><td><code>setPos</code>, or <code>mira.coffee.pos</code></td></tr>
-            <tr><td><code>llSetRot</code></td><td><code>setRot</code></td></tr>
-            <tr><td><code>llSetScale</code></td><td><code>setScale</code></td></tr>
+            <tr><td><code>llGetPos</code> <code>llSetPos</code></td><td><code>pos</code> <code>setPos</code></td></tr>
+            <tr><td><code>llGetRot</code> <code>llSetRot</code></td><td><code>rot</code> <code>setRot</code>. Euler radians.</td></tr>
+            <tr><td><code>llGetScale</code> <code>llSetScale</code></td><td><code>scale</code> <code>setScale</code></td></tr>
             <tr><td><code>llGetOwner</code></td><td><code>owner</code>. Here that is <code>mira</code>.</td></tr>
+            <tr><td><code>llGetKey</code></td><td><code>key</code></td></tr>
             <tr><td><code>llGetTime</code></td><td><code>clock</code></td></tr>
-            <tr><td><code>llSay</code></td><td><code>say</code>. <code>whisper</code> is the quiet one.</td></tr>
+            <tr><td><code>llSay</code> <code>llWhisper</code> <code>llShout</code></td><td><code>say</code> <code>whisper</code> <code>shout</code>. <code>listen</code> hears them.</td></tr>
             <tr><td><code>llSetTimerEvent</code></td><td><code>setTimer</code></td></tr>
             <tr><td><code>llParticleSystem</code></td><td><code>emit</code></td></tr>
+            <tr><td><code>llAbs</code> <code>llFloor</code> <code>llCeil</code> <code>llRound</code></td><td><code>abs</code> <code>floor</code> <code>ceil</code> <code>round</code></td></tr>
+            <tr><td><code>llSqrt</code> <code>llPow</code> <code>llLog</code> <code>llLog10</code></td><td><code>sqrt</code> <code>pow</code> <code>log</code> <code>log10</code></td></tr>
+            <tr><td><code>llSin</code> <code>llCos</code> <code>llTan</code></td><td><code>sin</code> <code>cos</code> <code>tan</code></td></tr>
+            <tr><td><code>llAsin</code> <code>llAcos</code> <code>llAtan2</code></td><td><code>asin</code> <code>acos</code> <code>atan2</code></td></tr>
+            <tr><td><code>llFrand</code></td><td><code>frand</code></td></tr>
+            <tr><td><code>llVecMag</code> <code>llVecNorm</code> <code>llVecDist</code></td><td><code>mag</code> <code>norm</code> <code>dist</code></td></tr>
+            <tr><td><code>llToUpper</code> <code>llToLower</code> <code>llStringTrim</code></td><td><code>upper</code> <code>lower</code> <code>trim</code></td></tr>
+            <tr><td><code>llSubStringIndex</code> <code>llGetSubString</code></td><td><code>find</code> <code>slice</code>. Indexes start at 0. <code>slice</code> stops before <code>end</code>.</td></tr>
           </tbody>
         </table>
-        <p>Aiming the hand is <code>ik</code>, <code>curl</code>, <code>tilt</code>, and <code>closeJaw</code>. A tail wags with <code>sway</code>. <code>prop("hold_target")</code> still reads a number. So does <code>mira.coffee.hold_target</code>.</p>
+        <p><code>min</code>, <code>max</code>, <code>mod</code>, <code>dot</code>, <code>cross</code>, <code>lerp</code>, and <code>clamp</code> are the small arithmetic. <code>mod(a, 0)</code> is 0. <code>==</code> stays exact. <code>same</code> compares lists and <code>{x, y, z}</code> records by value. <code>replace</code> swaps one piece of text for another. <code>split</code> breaks text into a list. Aiming the hand is <code>ik</code>, <code>curl</code>, <code>tilt</code>, and <code>closeJaw</code>. A tail wags with <code>sway</code>. <code>prop("hold_target")</code> still reads a number. So does <code>mira.coffee.hold_target</code>.</p>
         <p><code>speaker()</code> is the chapter speaker, lowercased. <code>live()</code> is the line being spoken. <code>offer("witch")</code> points a worn mic at another doll. <code>wearer()</code> is the doll who owns the asset whose script is running. <code>owner()</code> is the page doll.</p>
       </section>
 
