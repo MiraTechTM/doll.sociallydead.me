@@ -8,7 +8,7 @@ Doll speaks a markdown page, and she sings when the page asks. Qt Quick is the s
 
 - [Home](https://doll.sociallydead.me/): the voice, the three views, how she runs, and Contribute
 - [The room](https://doll.sociallydead.me/room/): one skeleton, one skin, and the company
-- [Doll Script](https://doll.sociallydead.me/script/): names, events, listeners, classes and interfaces, try and finally, the short names beside LSL, page marks, singing, and the picture modules
+- [Doll Script](https://doll.sociallydead.me/script/): names, events, listeners, classes and interfaces, try and finally, OpenSim and LSL with the ll and os prefixes removed, a speaker that stays until the next name, page marks, singing, and the picture modules
 
 ## Contribute
 

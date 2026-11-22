@@ -56,6 +56,7 @@
           <li><a href="#events">Events</a></li>
           <li><a href="#language">The language</a></li>
           <li><a href="#page">On the page</a></li>
+          <li><a href="#lsl">OpenSim</a></li>
           <li><a href="#singing">Singing</a></li>
           <li><a href="/#contribute">Contribute</a></li>
         </ul>
@@ -69,7 +70,8 @@
 
       <section id="names">
         <h2>Names</h2>
-        <p>A doll has a name. Mira is <code>mira</code>. The witch is <code>witch</code>. The tiefling is <code>tiefling</code>. The singer is <code>singer</code>. The same pattern names the rest of the company: <code>reaper</code>, <code>mandy</code>, <code>kimmel</code>, <code>miller</code>, <code>billy</code>, <code>elon</code>, <code>desi</code>, <code>trump</code>.</p>
+        <p>A doll has a name. Mira is <code>mira</code>. The witch is <code>witch</code>. The tiefling is <code>tiefling</code>. The singer is <code>singer</code>. The professor is <code>professor</code>. The same pattern names the rest of the company: <code>reaper</code>, <code>mandy</code>, <code>kimmel</code>, <code>miller</code>, <code>billy</code>, <code>elon</code>, <code>desi</code>, <code>trump</code>.</p>
+        <p>Poppy, Willa, Maren, and Hester are <code>poppy</code>, <code>willa</code>, <code>maren</code>, and <code>hester</code>, at 8, 16, 34, and 72. Toby, Ellis, Grant, and Harlan are <code>toby</code>, <code>ellis</code>, <code>grant</code>, and <code>harlan</code>, at 8, 16, 40, and 74. Those eight voices are generated. They are not Mira's clip.</p>
         <p>A dot reaches what she wears. The doll and the asset are the same kind of thing. Each one has properties, functions, and events.</p>
         <ul>
           <li><code>mira.speaking</code> is a property.</li>
@@ -79,7 +81,7 @@
           <li><code>mira.coffee.hold_target</code> is a number that lives on the cup.</li>
           <li><code>mira.coffee.hold()</code> is one of the cup's functions.</li>
         </ul>
-        <p>A few of the worn names: <code>mira.coffee</code>, <code>witch.hat</code>, <code>witch.wand</code>, <code>witch.book</code>, <code>tiefling.horns</code>, <code>tiefling.ears</code>, <code>tiefling.tail</code>, <code>reaper.scythe</code>, <code>mandy.flower</code>, <code>miller.fangs</code>, <code>desi.mic</code>, <code>singer.guitar</code>.</p>
+        <p>A few of the worn names: <code>mira.coffee</code>, <code>witch.hat</code>, <code>witch.wand</code>, <code>witch.book</code>, <code>tiefling.horns</code>, <code>tiefling.ears</code>, <code>tiefling.tail</code>, <code>reaper.scythe</code>, <code>mandy.flower</code>, <code>miller.fangs</code>, <code>desi.mic</code>, <code>singer.guitar</code>, <code>professor.book</code>.</p>
       </section>
 
       <section id="cup">
@@ -162,7 +164,7 @@ end</code></pre>
 
       <section id="page">
         <h2>On the page</h2>
-        <p>Square brackets mark the page, the way a link does. A paragraph with no name is Mira's, so an older page still plays. <code>Mira:</code> at the start of a line still names her.</p>
+        <p>Square brackets mark the page, the way a link does. A speaker stays until a later mark names a different one. The first paragraph, before any name, is Mira's. Words written before the first mark in a paragraph stay with the speaker already chosen. <code>Mira:</code> at the start of a line still names her.</p>
         <pre><code>[@Mira] The cup is warm.
 
 [@Witch] The wand is awake. [!spark]
@@ -170,12 +172,20 @@ end</code></pre>
 [@Trump!trump.rant] The suit is the avatar.
 
 [!sip](mira.coffee.sip())</code></pre>
+        <pre><code>[@Witch] One.
+
+Still the witch.
+
+[@Mira] Now Mira.
+
+And still Mira.</code></pre>
+        <p>The second paragraph is still the witch. The fourth is still Mira.</p>
         <table>
           <thead>
             <tr><th>Mark</th><th>What it does</th></tr>
           </thead>
           <tbody>
-            <tr><td><code>[@Witch]</code></td><td>Selects that speaker for the words that follow.</td></tr>
+            <tr><td><code>[@Witch]</code></td><td>Selects that speaker. Later paragraphs keep her until a new name is selected.</td></tr>
             <tr><td><code>[@Mira :)]</code></td><td>A smile can sit in the bracket. <code>:smile:</code> does the same.</td></tr>
             <tr><td><code>[&amp;shanty @Singer]</code></td><td>Turns singing on. Shanty is the type. Singer is the mouth.</td></tr>
             <tr><td><code>[&amp;shanty]</code></td><td>Sets the type and leaves the mouth.</td></tr>
@@ -228,22 +238,88 @@ end</code></pre>
       </section>
 
       <section id="lsl">
-        <h2>Beside LSL</h2>
-        <p>The short names act on the object whose event is running. These are the calls a worn asset actually makes. Land, money, teleport, experiences, and vehicles are not in this room.</p>
+        <h2>OpenSim and LSL, without the prefix</h2>
+        <p>Doll Script uses the same calls as OpenSim and LSL. The <code>ll</code> and <code>os</code> prefixes are not part of the name. <code>llSay</code> is not a Doll name. The call is <code>say</code>. <code>osNpcMoveTo</code> is <code>npcMoveTo</code>. A read that is only a property drops <code>Get</code> as well, so <code>llGetPos</code> is <code>pos</code> and <code>llSetPos</code> is <code>setPos</code>. The next letter after the prefix is lowercase. The short name acts on the object whose event is running.</p>
+        <p>Land, money, teleport, experiences, vehicles, and grid admin are not in this room. A name here is a call the script may use. It is not a claim that every grid function runs.</p>
+        <h3>Motion</h3>
         <table>
           <thead>
-            <tr><th>LSL</th><th>Doll</th></tr>
+            <tr><th>LSL or OpenSim</th><th>Doll</th></tr>
           </thead>
           <tbody>
             <tr><td><code>llGetPos</code> <code>llSetPos</code></td><td><code>pos</code> <code>setPos</code></td></tr>
             <tr><td><code>llGetRot</code> <code>llSetRot</code></td><td><code>rot</code> <code>setRot</code>. Euler radians.</td></tr>
             <tr><td><code>llGetScale</code> <code>llSetScale</code></td><td><code>scale</code> <code>setScale</code></td></tr>
-            <tr><td><code>llGetOwner</code></td><td><code>owner</code>. Here that is <code>mira</code>.</td></tr>
-            <tr><td><code>llGetKey</code></td><td><code>key</code></td></tr>
-            <tr><td><code>llGetTime</code></td><td><code>clock</code></td></tr>
-            <tr><td><code>llSay</code> <code>llWhisper</code> <code>llShout</code></td><td><code>say</code> <code>whisper</code> <code>shout</code>. <code>listen</code> hears them.</td></tr>
-            <tr><td><code>llSetTimerEvent</code></td><td><code>setTimer</code></td></tr>
-            <tr><td><code>llParticleSystem</code></td><td><code>emit</code></td></tr>
+            <tr><td><code>llGetLocalPos</code> <code>llSetLocalPos</code></td><td><code>localPos</code> <code>setLocalPos</code></td></tr>
+            <tr><td><code>llGetLocalRot</code> <code>llSetLocalRot</code></td><td><code>localRot</code> <code>setLocalRot</code></td></tr>
+            <tr><td><code>llMoveToTarget</code> <code>llStopMoveToTarget</code></td><td><code>moveTo</code> <code>stopMove</code></td></tr>
+            <tr><td><code>llLookAt</code> <code>llStopLookAt</code> <code>llRotLookAt</code></td><td><code>lookAt</code> <code>stopLook</code> <code>rotLookAt</code></td></tr>
+            <tr><td><code>llSetKeyframedMotion</code></td><td><code>keyframe</code></td></tr>
+            <tr><td><code>llStartAnimation</code> <code>llStopAnimation</code></td><td><code>startAnimation</code> <code>stopAnimation</code></td></tr>
+            <tr><td><code>llSetAnimationOverride</code> <code>llResetAnimationOverride</code></td><td><code>setAnimationOverride</code> <code>resetAnimationOverride</code></td></tr>
+            <tr><td><code>llGetAnimation</code> <code>llGetAnimationList</code> <code>llGetAnimationOverride</code></td><td><code>animation</code> <code>animations</code> <code>animationOverride</code></td></tr>
+            <tr><td><code>llApplyImpulse</code> <code>llSetForce</code> <code>llSetTorque</code> <code>llSetBuoyancy</code></td><td><code>applyImpulse</code> <code>setForce</code> <code>setTorque</code> <code>setBuoyancy</code></td></tr>
+            <tr><td><code>llGetVel</code> <code>llGetAccel</code> <code>llGetOmega</code></td><td><code>vel</code> <code>accel</code> <code>omega</code></td></tr>
+            <tr><td><code>llSitTarget</code> <code>llAvatarOnSitTarget</code> <code>llUnSit</code></td><td><code>sit</code> <code>sitter</code> <code>unsit</code></td></tr>
+            <tr><td><code>llAttachToAvatar</code> <code>llDetachFromAvatar</code> <code>llGetAttached</code></td><td><code>wear</code> <code>detach</code> <code>attached</code></td></tr>
+          </tbody>
+        </table>
+        <h3>Voice</h3>
+        <table>
+          <thead>
+            <tr><th>LSL</th><th>Doll</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>llSay</code> <code>llWhisper</code> <code>llShout</code></td><td><code>say</code> <code>whisper</code> <code>shout</code></td></tr>
+            <tr><td><code>llOwnerSay</code> <code>llRegionSayTo</code></td><td><code>ownerSay</code> <code>sayTo</code></td></tr>
+            <tr><td><code>llListen</code></td><td><code>listen</code></td></tr>
+            <tr><td><code>llDialog</code> <code>llTextBox</code></td><td><code>dialog</code> <code>textBox</code></td></tr>
+            <tr><td><code>llPlaySound</code> <code>llLoopSound</code> <code>llStopSound</code> <code>llTriggerSound</code></td><td><code>playSound</code> <code>loopSound</code> <code>stopSound</code> <code>triggerSound</code></td></tr>
+            <tr><td><code>llAdjustSoundVolume</code></td><td><code>volume</code></td></tr>
+          </tbody>
+        </table>
+        <h3>NPC</h3>
+        <table>
+          <thead>
+            <tr><th>OpenSim</th><th>Doll</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>osNpcCreate</code> <code>osNpcRemove</code></td><td><code>npcCreate</code> <code>npcRemove</code></td></tr>
+            <tr><td><code>osNpcSay</code> <code>osNpcWhisper</code> <code>osNpcShout</code></td><td><code>npcSay</code> <code>npcWhisper</code> <code>npcShout</code></td></tr>
+            <tr><td><code>osNpcMoveTo</code> <code>osNpcMoveToTarget</code></td><td><code>npcMoveTo</code></td></tr>
+            <tr><td><code>osNpcPlayAnimation</code> <code>osNpcStopAnimation</code></td><td><code>npcPlayAnimation</code> <code>npcStopAnimation</code></td></tr>
+            <tr><td><code>osNpcSit</code> <code>osNpcStand</code></td><td><code>npcSit</code> <code>npcStand</code></td></tr>
+            <tr><td><code>osNpcLookAt</code> <code>osNpcTouch</code></td><td><code>npcLookAt</code> <code>npcTouch</code></td></tr>
+            <tr><td><code>osNpcGetPos</code> <code>osNpcSetRot</code> <code>osNpcGetRot</code></td><td><code>npcPos</code> <code>npcSetRot</code> <code>npcRot</code></td></tr>
+            <tr><td><code>osSetSpeed</code></td><td><code>setSpeed</code></td></tr>
+            <tr><td><code>osAvatarPlayAnimation</code> <code>osAvatarStopAnimation</code></td><td><code>playAnimation</code> <code>stopAnimation</code></td></tr>
+          </tbody>
+        </table>
+        <h3>Picture</h3>
+        <table>
+          <thead>
+            <tr><th>LSL or OpenSim</th><th>Doll</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>osDrawText</code> <code>osDrawImage</code> <code>osDrawLine</code></td><td><code>drawText</code> <code>drawImage</code> <code>drawLine</code></td></tr>
+            <tr><td><code>osDrawRectangle</code> <code>osDrawFilledRectangle</code></td><td><code>drawRectangle</code> <code>drawFilledRectangle</code></td></tr>
+            <tr><td><code>osDrawEllipse</code> <code>osDrawFilledEllipse</code></td><td><code>drawEllipse</code> <code>drawFilledEllipse</code></td></tr>
+            <tr><td><code>osMovePen</code> <code>osSetPenColor</code> <code>osSetPenSize</code></td><td><code>movePen</code> <code>penColor</code> <code>penSize</code></td></tr>
+            <tr><td><code>osSetFontName</code> <code>osSetFontSize</code> <code>osGetDrawStringSize</code></td><td><code>font</code> <code>fontSize</code> <code>textSize</code></td></tr>
+            <tr><td><code>llSetText</code> <code>llSetColor</code> <code>llSetAlpha</code> <code>llSetTexture</code></td><td><code>setText</code> <code>setColor</code> <code>setAlpha</code> <code>setTexture</code></td></tr>
+            <tr><td><code>llSetPrimitiveParams</code> <code>llGetPrimitiveParams</code></td><td><code>setParams</code> <code>params</code></td></tr>
+            <tr><td><code>llParticleSystem</code> <code>osParticleSystem</code></td><td><code>emit</code></td></tr>
+          </tbody>
+        </table>
+        <h3>Clock and text</h3>
+        <table>
+          <thead>
+            <tr><th>LSL</th><th>Doll</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>llGetTime</code> <code>llResetTime</code></td><td><code>clock</code> <code>resetClock</code></td></tr>
+            <tr><td><code>llSetTimerEvent</code> <code>llSleep</code></td><td><code>setTimer</code> <code>sleep</code></td></tr>
+            <tr><td><code>llGetUnixTime</code> <code>llGetTimestamp</code></td><td><code>unix</code> <code>timestamp</code></td></tr>
             <tr><td><code>llAbs</code> <code>llFloor</code> <code>llCeil</code> <code>llRound</code></td><td><code>abs</code> <code>floor</code> <code>ceil</code> <code>round</code></td></tr>
             <tr><td><code>llSqrt</code> <code>llPow</code> <code>llLog</code> <code>llLog10</code></td><td><code>sqrt</code> <code>pow</code> <code>log</code> <code>log10</code></td></tr>
             <tr><td><code>llSin</code> <code>llCos</code> <code>llTan</code></td><td><code>sin</code> <code>cos</code> <code>tan</code></td></tr>
@@ -252,9 +328,12 @@ end</code></pre>
             <tr><td><code>llVecMag</code> <code>llVecNorm</code> <code>llVecDist</code></td><td><code>mag</code> <code>norm</code> <code>dist</code></td></tr>
             <tr><td><code>llToUpper</code> <code>llToLower</code> <code>llStringTrim</code></td><td><code>upper</code> <code>lower</code> <code>trim</code></td></tr>
             <tr><td><code>llSubStringIndex</code> <code>llGetSubString</code></td><td><code>find</code> <code>slice</code>. Indexes start at 0. <code>slice</code> stops before <code>end</code>.</td></tr>
+            <tr><td><code>llDumpList2String</code> <code>llCSV2List</code></td><td><code>join</code> <code>split</code></td></tr>
+            <tr><td><code>llGetOwner</code> <code>llGetKey</code> <code>llGetStatus</code></td><td><code>owner</code> <code>key</code> <code>status</code>. <code>owner</code> here is <code>mira</code>.</td></tr>
+            <tr><td><code>llGetLinkNumber</code> <code>llMessageLinked</code></td><td><code>link</code> <code>message</code></td></tr>
           </tbody>
         </table>
-        <p><code>min</code>, <code>max</code>, <code>mod</code>, <code>dot</code>, <code>cross</code>, <code>lerp</code>, and <code>clamp</code> are the small arithmetic. <code>mod(a, 0)</code> is 0. <code>==</code> stays exact. <code>same</code> compares lists and <code>{x, y, z}</code> records by value. <code>replace</code> swaps one piece of text for another. <code>split</code> breaks text into a list. Aiming the hand is <code>ik</code>, <code>curl</code>, <code>tilt</code>, and <code>closeJaw</code>. A tail wags with <code>sway</code>. <code>prop("hold_target")</code> still reads a number. So does <code>mira.coffee.hold_target</code>.</p>
+        <p><code>min</code>, <code>max</code>, <code>mod</code>, <code>dot</code>, <code>cross</code>, <code>lerp</code>, and <code>clamp</code> are the small arithmetic. <code>mod(a, 0)</code> is 0. <code>==</code> stays exact. <code>same</code> compares lists and <code>{x, y, z}</code> records by value. <code>replace</code> swaps one piece of text for another. Aiming the hand is <code>ik</code>, <code>curl</code>, <code>tilt</code>, and <code>closeJaw</code>. A tail wags with <code>sway</code>. <code>prop("hold_target")</code> still reads a number. So does <code>mira.coffee.hold_target</code>.</p>
         <p><code>speaker()</code> is the chapter speaker, lowercased. <code>live()</code> is the line being spoken. <code>offer("witch")</code> points a worn mic at another doll. <code>wearer()</code> is the doll who owns the asset whose script is running. <code>owner()</code> is the page doll.</p>
       </section>
 
@@ -273,6 +352,7 @@ fn always()
   scene.update()
 end</code></pre>
         <p><code>tv</code>, <code>news</code>, <code>terminal</code>, <code>dragon</code>, <code>frog</code>, <code>cat</code>, <code>dog</code>, <code>bird</code>, <code>aquarium</code>, and <code>plant</code> are the script names. <code>prop("tv-2")</code> reaches a second one. The fish swim. <code>tv.text</code> and <code>tv.image</code> set the screen. The image is a WebP. <code>news.text</code> is the line on the glass. <code>terminal.text</code> is the listing. <code>dragon.stance</code> is <code>fly</code> or <code>ground</code>. Ground folds the wings. Fly lifts him and spreads them.</p>
+        <p>A bat, a lantern, a candle, a clock, and a skull can sit on the stage beside those. The bat flaps. The lantern glows. The candle flickers. The clock hand follows <code>clock()</code>. The skull bobs. Rain, a hearth, night, and a cafe are the background loops. <code>loopSound</code> keeps the one you chose until a different name is chosen, and the loop ducks while someone speaks.</p>
       </section>
 
       <section id="contribute">
